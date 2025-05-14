@@ -1,16 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export const Login = () => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
-    useEffect(() => {
-        console.log(email)
-    }, [email]);
+    // useEffect(() => {
+    //     console.log(email)
+    // }, [email]);
 
-    useEffect(() => {
-        console.log(senha)
-    }, [senha]);
+    // useEffect(() => {
+    //     console.log(senha)
+    // }, [senha]);
+
+    const emailLength = useMemo(() => {
+        console.log('Executou')
+        return email.length * 1000;
+    }, [email]);
 
     const handleEntrar = () => {
         console.log(email)
@@ -19,10 +24,12 @@ export const Login = () => {
     return (
         <div>
             <form>
-
+                <p>Quantidade de caracteres no email: {emailLength}</p>
                 <label>
                     <span>Email</span>
                     <input
+                        id="email"
+                        autoComplete="on"
                         type="text"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
@@ -32,13 +39,14 @@ export const Login = () => {
                 <label>
                     <span>Senha</span>
                     <input
+                        id="senha"
                         type="password"
                         value={senha}
                         onChange={e => setSenha(e.target.value)}
                     />
                 </label>
 
-                <button type="button" onClick={handleEntrar}>
+                <button id="button" type="button" onClick={handleEntrar}>
                     Entrar
                 </button>
             </form>
