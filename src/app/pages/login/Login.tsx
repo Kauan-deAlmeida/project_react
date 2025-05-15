@@ -25,7 +25,7 @@ export const Login = () => {
                 <InputLogin
                     id="email"
                     label="Email"
-                    autocomplete="on"
+                    autocomplete="off"
                     value={email}
                     onChange={newValue => setEmail(newValue)}
                     onPressEnter={() => inputPasswordRef.current?.focus()}
@@ -36,6 +36,7 @@ export const Login = () => {
                     label="Senha"
                     type="password"
                     value={senha}
+                    ref={inputPasswordRef}
                     onChange={newValue => setSenha(newValue)}
                 />
 

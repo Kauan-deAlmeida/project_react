@@ -1,4 +1,4 @@
-
+import React from "react";
 
 interface IInputLoginProps {
     label: string; 
@@ -10,11 +10,12 @@ interface IInputLoginProps {
     onPressEnter?: () => void;
 }
 
-export const InputLogin: React.FC<IInputLoginProps> = (props) => {
+export const InputLogin = React.forwardRef<HTMLInputElement, IInputLoginProps>((props, ref) => {
     return (
         <label>
             <span>{props.label}</span>
             <input
+                ref={ref}
                 id={props.id}
                 autoComplete={props.autocomplete}
                 value={props.value}
@@ -24,4 +25,4 @@ export const InputLogin: React.FC<IInputLoginProps> = (props) => {
             />
         </label>
     );
-}
+});
