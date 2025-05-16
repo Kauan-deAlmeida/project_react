@@ -22,7 +22,7 @@ export const Login = () => {
         <div>
             <form>
                 <p>Quantidade de caracteres no email: {emailLength}</p>
-                
+
                 <InputLogin
                     id="email"
                     label="Email"
@@ -41,8 +41,7 @@ export const Login = () => {
                     onChange={newValue => setSenha(newValue)}
                 />
 
-                <ButtonLogin type="button" onClick={handleEntrar}>Entrar</ButtonLogin>
-                <ButtonLogin type="button" onClick={handleEntrar}>Cadastrar</ButtonLogin>
+                <ButtonLogin id="entrar" type="button" onClick={handleEntrar}>Entrar</ButtonLogin>
             </form>
         </div>
     );
