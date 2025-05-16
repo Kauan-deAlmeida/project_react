@@ -11,11 +11,11 @@ interface IUsuarioLogadoProviderProps {
 
 export const UsuarioLogadoContext = createContext<IUsuarioLogadoContextData>({} as IUsuarioLogadoContextData);
 
-export const UsuarioLogadoProvider: React.FC<IUsuarioLogadoProviderProps> = ({children}) => {
-    const [ nome, setNome ] = useState('');
+export const UsuarioLogadoProvider: React.FC<IUsuarioLogadoProviderProps> = ({ children }) => {
+    const [nome, setNome] = useState('');
 
     useEffect(() => {
-        setTimeout(() => { 
+        setTimeout(() => {
             setNome('Kauan');
         }, 1000);
     });
