@@ -1,12 +1,12 @@
+import { useRef } from "react"
 import { Link } from "react-router-dom"
+import { useUsuarioLogado } from "../../shared/hooks"
 import { Button } from "../../shared/components/ButtonNavigacao"
-import { useContext, useRef } from "react"
-import { UsuarioLogadoContext } from "../../shared/contexts"
 
 export const Dashboard = () => {
 
     const counterRef = useRef({ counter: 0 });
-    const usuarioLogadoContext = useContext(UsuarioLogadoContext);
+    const usuarioLogadoContext = useUsuarioLogado();
 
     return (
         <div>
