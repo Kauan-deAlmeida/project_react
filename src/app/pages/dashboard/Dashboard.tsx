@@ -1,9 +1,9 @@
 import { useCallback, useState } from "react"
 
 interface ITarefa {
-    id: number,
-    title: string,
-    isCompleted: boolean
+    id: number;
+    title: string;
+    isCompleted: boolean;
 }
 
 export const Dashboard = () => {
