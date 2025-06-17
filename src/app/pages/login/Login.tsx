@@ -1,24 +1,18 @@
-import { useCallback, useMemo, useRef, useState } from "react";
 import { InputLogin } from "./components/InputLogin";
 import { ButtonLogin } from "./components/ButtonLogin";
-import { useUsuarioLogado } from "../../shared/hooks";
+import useLogin from "./hooks/useLogin";
 
 export const Login = () => {
-    const inputPasswordRef = useRef<HTMLInputElement>(null);
-    const { nomeDoUsuario } = useUsuarioLogado();
-
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
-
-    const emailLength = useMemo(() => {
-        console.log('Executou')
-        return email.length * 1000;
-    }, [email]);
-
-    const handleEntrar = useCallback(() => {
-        console.log(email)
-        console.log(senha)
-    }, [email, senha]);
+    const {
+        inputPasswordRef,
+        nomeDoUsuario,
+        email,
+        senha,
+        emailLength,
+        setEmail,
+        setSenha,
+        handleEntrar
+    } = useLogin();
 
     return (
         <div>
