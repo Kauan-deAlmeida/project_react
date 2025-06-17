@@ -23,15 +23,19 @@ export const Dashboard = () => {
             const valor = e.currentTarget.value;
             e.currentTarget.value = '';
 
-            setLista((oldLista) => {
-                if (oldLista.some((listItem) => listItem.title === valor)) return oldLista;
-                
-                return [...oldLista, {
-                    id: oldLista.length,
-                    title: valor,
-                    isCompleted: false
-                }];
-            });
+            if (lista.some((listItem) => listItem.title === valor)) return;
+
+            TarefasService.create({ title: valor, isCompleted: false })
+                .then((result) => {
+                    if (result instanceof ApiException) {
+                        alert(result.message);
+                    }
+                    else {
+                        setLista((oldLista) => {
+                            return [...oldLista, result];
+                        });
+                    }
+                });
         }
     }, []);
 
@@ -46,17 +50,17 @@ export const Dashboard = () => {
             <ul>
                 {lista.map((listItem, index) => {
                     return <li key={index} id="liLista">
-                        <input 
+                        <input
                             id={`checkbox-${index}`}
                             type="checkbox"
                             checked={listItem.isCompleted}
                             onChange={() => {
                                 setLista((oldLista) => {
                                     return oldLista.map(oldListItem => {
-                                        const newIsCompleted = oldListItem.title === listItem.title 
-                                        ? !oldListItem.isCompleted 
-                                        : oldListItem.isCompleted; 
-                                        
+                                        const newIsCompleted = oldListItem.title === listItem.title
+                                            ? !oldListItem.isCompleted
+                                            : oldListItem.isCompleted;
+
                                         return {
                                             ...oldListItem,
                                             isCompleted: newIsCompleted
