@@ -14,7 +14,7 @@ export const Dashboard = () => {
 
             <input id="inputLista" onKeyDown={handleInputOnKeyDown} />
 
-            <p>{lista.filter((listItem) => listItem.isCompleted).length}</p>
+            <p>{lista.filter((listItem) => listItem.preco === 1).length}</p>
 
             <ul>
                 {lista.map((listItem, index) => {
@@ -22,10 +22,10 @@ export const Dashboard = () => {
                         <input
                             id={`checkbox-${index}`}
                             type="checkbox"
-                            checked={listItem.isCompleted}
+                            checked={listItem.preco === 1}
                             onChange={() => handleToggleComplete(listItem.id)} />
 
-                        {listItem.title}
+                        {listItem.nome}
 
                         <button onClick={() => handleDeletar(listItem.id)}>Apagar</button>
                     </li>;

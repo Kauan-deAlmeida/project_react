@@ -2,17 +2,19 @@ import { Api } from "../ApiConfig";
 import { ApiException } from "../ApiException";
 
 export interface ITarefa {
-    id: number;
-    title: string;
-    isCompleted: boolean;
+    id: number,
+    nome: string,
+    preco: number,
+    descricao: string,
+    dataCadastro: string,
 }
 
 const getAll = async (): Promise<ITarefa[] | ApiException> => {
     try{
-        const { data } = await Api().get('/tarefas');
+        const { data } = await Api().get('/produtos');
         return data;
     } catch (error: any) {
-        return new ApiException(error.message || 'Erro ao buscar todas as tarefas.');
+        return new ApiException(error.message || 'Erro ao buscar todos os produtos.');
     }
 };
 

@@ -23,9 +23,9 @@ const useDashboard = () => {
             const valor = e.currentTarget.value;
             e.currentTarget.value = '';
 
-            if (lista.some((listItem) => listItem.title === valor)) return;
+            if (lista.some((listItem) => listItem.nome === valor)) return;
 
-            TarefasService.create({ title: valor, isCompleted: false })
+            TarefasService.create({ nome: valor, preco: 0, descricao: '', dataCadastro: '' })
                 .then((result) => {
                     if (result instanceof ApiException) {
                         alert(result.message);
@@ -45,7 +45,7 @@ const useDashboard = () => {
 
         TarefasService.updateById(id, {
             ...tarefaToUpdate,
-            isCompleted: !tarefaToUpdate.isCompleted
+            preco: tarefaToUpdate.preco === 0 ? 1 : 0
         })
             .then((result) => {
                 if (result instanceof ApiException) {
